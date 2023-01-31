@@ -1,0 +1,33 @@
+{
+  "name": "mttq_test",
+  "scripts": {
+    "start": "node build/index.js",
+    "build": "tsc",
+    "clean": "rm -rf ./build || true",
+    "pm2": "yarn build && cp .env build/.env && pm2 restart mttq",
+    "pm2:start": "pm2 start build/index.js --name mttq",
+    "dev": "ts-node-dev src/index.ts"
+  },
+  "dependencies": {
+    "aedes": "^0.48.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "mongoose": "^6.9.0",
+    "websocket-stream": "^5.5.2"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.13",
+    "@types/express": "^4.17.16",
+    "@types/node": "^18.11.18",
+    "@types/ws": "^8.5.4",
+    "@typescript-eslint/eslint-plugin": "^5.49.0",
+    "@typescript-eslint/parser": "^5.49.0",
+    "eslint": "^8.33.0",
+    "eslint-config-prettier": "^8.6.0",
+    "husky": "^8.0.3",
+    "prettier": "^2.8.3",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^4.9.4"
+  }
+}

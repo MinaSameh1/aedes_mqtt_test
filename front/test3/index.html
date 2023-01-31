@@ -1,0 +1,98 @@
+<html>
+  <head>
+    <title>test Ws mqtt.js</title>
+  </head>
+  <body>
+    <script src="./browserMqtt.js"></script>
+    <script>
+      window.addEventListener("DOMContentLoaded", () => {
+        console.log(" >>> Loaded....");
+        const client = mqtt.connect("ws://127.0.0.1:8080");
+        client.subscribe("route2");
+
+        client.on("connect", () => {
+          console.log("Connected");
+        });
+
+        client.on("message", function (topic, payload) {
+          alert([topic, payload].join(": "));
+        });
+
+        const form = document.querySelector("form");
+        form.addEventListener("submit", (e) => {
+          e.preventDefault();
+          console.log("Submit");
+          const text = document.getElementById("cords").value;
+          client.publish(
+            "cords",
+            JSON.stringify([
+              {
+                message: text,
+                battery: 50,
+                bla: 0110239139812313,
+              },
+
+              {
+                message: text,
+                battery: 50,
+                bla: 0110239139812313,
+              },
+              {
+                message: text,
+                battery: 50,
+                bla: 0110239139812313,
+              },
+              {
+                message: text,
+                battery: 50,
+                bla: 0110239139812313,
+              },
+              {
+                message: text,
+                battery: 50,
+                bla: 0110239139812313,
+              },
+              {
+                message: text,
+                battery: 50,
+                bla: 0110239139812313,
+              },
+              {
+                message: text,
+                battery: 50,
+                bla: 0110239139812313,
+              },
+              {
+                message: text,
+                battery: 50,
+                bla: 0110239139812313,
+              },
+              {
+                message: text,
+                battery: 50,
+                bla: 0110239139812313,
+              },
+              {
+                message: text,
+                battery: 50,
+                bla: 0110239139812313,
+              },
+              {
+                message: text,
+                battery: 50,
+                bla: 0110239139812313,
+              },
+            ])
+          );
+        });
+      });
+    </script>
+    <div>
+      <h1>Hello world</h1>
+      <form name="form" id="form">
+        <input type="text" name="cords" id="cords" />
+        <input type="submit" />
+      </form>
+    </div>
+  </body>
+</html>

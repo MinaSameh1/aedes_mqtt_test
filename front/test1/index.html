@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>test Ws mqtt.js</title>
+  </head>
+  <body>
+    <script src="./browserMqtt.js"></script>
+    <script>
+      window.addEventListener("DOMContentLoaded", () => {
+        console.log(" >>> Loaded....");
+        // 192.168.1.229
+        try {
+          const client = mqtt.connect(
+            "wss://mahaseel.ddns.net/dev/tracker/mqtt/ws/"
+          );
+          const arr = [];
+          client.subscribe("cords");
+
+          client.on("error", (err) => {
+            console.error(err);
+          });
+
+          client.on("connect", () => {
+            console.log("Connected");
+          });
+
+          client.on("disconnect", () => {
+            console.log("DisConnected");
+          });
+
+          client.on("message", function (topic, payload) {
+            alert([topic, payload].join(": "));
+            arr.push(payload);
+            document.getElementById("para").innerHTML = arr.toString();
+            if (client.connected) client.publish("route2", "Hello Recieved");
+            else alert(["Error", "No client"].join(":"));
+          });
+        } catch (err) {
+          console.error(err);
+        }
+      });
+    </script>
+    <h1>Hello</h1>
+    <pre id="para">didnt recieve anything</pre>
+  </body>
+</html>
