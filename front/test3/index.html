@@ -7,7 +7,7 @@
     <script>
       window.addEventListener("DOMContentLoaded", () => {
         console.log(" >>> Loaded....");
-        const client = mqtt.connect("ws://127.0.0.1:8080");
+        const client = mqtt.connect("ws://localhost:7000");
         client.subscribe("route2");
 
         client.on("connect", () => {

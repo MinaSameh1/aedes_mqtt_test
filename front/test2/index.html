@@ -10,7 +10,7 @@
         console.log(" >>> Loaded....");
         try {
           const client = mqtt.connect(
-            "wss://mahaseel.ddns.net/dev/tracker/mqtt/ws/"
+            "ws://localhost:7000"
           );
           client.subscribe("route2");
 
